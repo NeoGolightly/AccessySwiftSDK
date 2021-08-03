@@ -9,18 +9,28 @@ import Foundation
 
 public protocol AccessySwiftSDKType {
   static var shared: AccessySwiftSDKType { get }
+  static var apiVersion: String { get }
   var configuration: AccessySKDConfiguration { get set}
-  //Infrastructure
-  func getInfrastructure(for coordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void)
   
-  //Sidewalks
+  ///Receive all infrastructure objects around the center coordinate with specified radius.
+  /// - Parameters:
+  ///   - centerCoordinate: Center coordinate for the region
+  ///   - radius: Radius around the center coordinate for the region
+  ///   - completion: Closure returning a Result type with the fetched ``Infrastructure`` object or an ``AccessySKDError``
+  func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void)
+  
+  ///Receive all infrastructure objects
+  /// - Parameters:
+  ///   - completion: Closure returning a Result type with the fetched ``Infrastructure`` object or an ``AccessySKDError``
+  func getInfrastructure(completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void)
+  
   ///Create sidewalk in database
   ///
   /// Use this method to create new ``Sidewalk`` in the database.
   /// >Important: Only attach existing ``PathNode``s to the sidewalks ``Sidewalk/pathNodes`` property. Not existing path nodes will be created on the server. You retriev them from  ``createSidewalk(_:completion:)``
   ///
   /// - Parameters:
-  ///   - sidewalk: the ``Sidewalk`` object you want to create
+  ///   - sidewalk: the ``Sidewalk`` object you want to create. ``Sidewalk/id``, ``Sidewalk/createdAt``, ``Sidewalk/updatedAt`` and ``Sidewalk/deletedAt`` will be ignored.
   ///   - completion: completion handler with created ``Sidewalk`` or ``AccessySKDError``
   func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void)
   ///Get sidewalk from database with corresponding id
@@ -34,7 +44,7 @@ public protocol AccessySwiftSDKType {
   ///Update sidewalk in database
   func updateSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void)
   ///Delete sidewalk from database
-  func deleteSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Bool, AccessySKDError>) -> Void)
+  func deleteSidewalk(for id: UUID, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void)
   //Ping
   func ping(completion: @escaping (Result<String, AccessySKDError>) -> Void)
 }

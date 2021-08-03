@@ -8,6 +8,7 @@
 import Foundation
 
 public enum AccessySKDError: Error {
+  //TODO: Better error names
   case wrongBaseURL
   case noData
   case jsonDecodingError
@@ -17,4 +18,12 @@ public enum AccessySKDError: Error {
   case some(Error)
   case responseError(Int)
   case responseError(Int, String)
+  
+  //FIXME: Add description
+}
+
+
+struct ResponseError: Codable {
+  let error: Bool
+  let reason: String
 }

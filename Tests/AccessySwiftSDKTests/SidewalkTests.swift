@@ -24,11 +24,16 @@ class SidewalksSpec: QuickSpec {
           sdk.createSidewalk(sidewalk, completion: { result in
             createdSidewalkResult = result
           })
-          expect(createdSidewalkResult).toEventuallyNot(beNil())
+          expect(createdSidewalkResult).toEventuallyNot(beNil(), timeout: .seconds(10))
           expect(createdSidewalkResult).toEventually(beSuccess(test: { createdSidewalk in
             expect(createdSidewalk.id).toNot(beNil())
             expect(createdSidewalk.pathCoordinates.count).to(equal(2))
-          }))
+            sdk.deleteSidewalk(for: try! createdSidewalk.id!) { result in
+              print("deleted?: \(result)")
+            }
+          }), timeout: .seconds(10))
+          
+          
         }
       }
     }
