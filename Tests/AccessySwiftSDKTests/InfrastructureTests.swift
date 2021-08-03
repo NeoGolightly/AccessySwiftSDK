@@ -16,7 +16,7 @@ class InfrastructureSpec: QuickSpec {
     
 
     describe("An Infrastructure") {
-      let coordinate = Coordinate(latitude: 51.907977495291846, longitude: 10.427344884597142)
+      let coordinate = Coordinate(latitude: 51.909575619490916, longitude: 10.426226336816571)
       
       context("can be fetched") {
         it("an returns an empty infrastructure"){

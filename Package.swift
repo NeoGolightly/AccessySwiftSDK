@@ -16,7 +16,7 @@ let package = Package(
     .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.0")),
     .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
     .package(url: "https://github.com/Quick/Quick.git", branch: "main"),
-    .package(url: "https://github.com/Quick/Nimble.git", branch: "main")
+    .package(url: "https://github.com/Quick/Nimble.git", branch: "main"),
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -25,7 +25,8 @@ let package = Package(
       name: "AccessySwiftSDK",
       dependencies: [
         .product(name: "Logging", package: "swift-log"),
-        .product(name: "Alamofire", package: "Alamofire")
+        .product(name: "Alamofire", package: "Alamofire"),
+        
       ]),
     .testTarget(
       name: "AccessySwiftSDKTests",

@@ -7,10 +7,18 @@
 
 import Foundation
 @testable import AccessySwiftSDK
+import CoreLocation
 
 
 class AccessySwiftSDKStub: AccessySwiftSDKType {
-  func getInfrastructure(for coordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void) {
+
+  
+  
+  func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void) {
+    
+  }
+  
+  func getInfrastructure(completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void) {
     
   }
   
@@ -34,12 +42,12 @@ class AccessySwiftSDKStub: AccessySwiftSDKType {
     
   }
   
-  func deleteSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Bool, AccessySKDError>) -> Void) {
-    
+  func deleteSidewalk(for id: UUID, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void) {
+
   }
   
   static let shared: AccessySwiftSDKType = AccessySwiftSDKStub()
-  
+  static var apiVersion: String = ""
   var configuration: AccessySKDConfiguration = AccessySKDConfiguration(enviroment: .testing)
   
   func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void) {
@@ -56,13 +64,6 @@ class AccessySwiftSDKStub: AccessySwiftSDKType {
 extension Sidewalk {
   static func mock() -> Sidewalk {
     Sidewalk(pathCoordinates: [.mockCoordinate1(), .mockCoordinate2()])
-  }
-}
-
-
-extension PathNode {
-  static func mockWithUUID(coodinate: Coordinate) -> PathNode {
-    PathNode(id: UUID(), coordinate: coodinate)
   }
 }
 
