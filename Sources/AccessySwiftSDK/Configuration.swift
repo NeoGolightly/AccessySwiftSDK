@@ -13,7 +13,7 @@ public enum AccessySKDEnviroment{
 
 public struct AccessySKDConfiguration{
   public let enviroment: AccessySKDEnviroment
-  public var baseURL: String {
+  internal var baseURL: String {
     switch enviroment {
     case .testing:
       return "http://0.0.0.0:7070/api/"
@@ -24,5 +24,9 @@ public struct AccessySKDConfiguration{
     case .staging:
       return "http://162.55.217.142:8080/api/"
     }
+  }
+  
+  public init(enviroment: AccessySKDEnviroment) {
+    self.enviroment = enviroment
   }
 }
