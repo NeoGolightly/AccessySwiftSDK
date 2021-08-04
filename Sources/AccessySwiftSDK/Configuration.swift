@@ -8,7 +8,7 @@
 import Foundation
 
 public enum AccessySKDEnviroment{
-  case testing, development, staging, production
+  case testing, development, staging, production, custom(String)
 }
 
 public struct AccessySKDConfiguration{
@@ -23,6 +23,8 @@ public struct AccessySKDConfiguration{
       return "http://162.55.217.142:8080/api/"
     case .staging:
       return "http://162.55.217.142:8080/api/"
+    case .custom(let customURL):
+      return customURL
     }
   }
   
