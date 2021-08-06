@@ -27,8 +27,8 @@ public struct CreateSidewalkData: PathRepresentable, Codable {
 }
 
 public struct CreateSidewalkResponse: Codable{
-  let createdSidewalk: Sidewalk
-  let createdIntersectionNodes: [IntersectionNode]
+  public let createdSidewalk: Sidewalk
+  public let createdIntersectionNodes: [IntersectionNode]
   public init(createdSidewalk: Sidewalk, createdIntersectionNodes: [IntersectionNode]) {
     self.createdSidewalk = createdSidewalk
     self.createdIntersectionNodes = createdIntersectionNodes
