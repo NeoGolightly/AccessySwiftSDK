@@ -62,7 +62,7 @@ extension AccessySwiftSDK {
 extension AccessySwiftSDK {
   
 
-  public func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void) {
+  public func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<CreateSidewalkResponse, AccessySKDError>) -> Void) {
     createRequest(for: CreateSidewalkRequest(object: sidewalk), completion: completion)
   }
   

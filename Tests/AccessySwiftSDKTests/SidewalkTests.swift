@@ -20,15 +20,15 @@ class SidewalksSpec: QuickSpec {
       
       context("can be created") {
         it("it returns a Sidewalk with uuid and nodes set"){
-          var createdSidewalkResult: Result<Sidewalk, AccessySKDError>?
+          var createdSidewalkResult: Result<CreateSidewalkResponse, AccessySKDError>?
           sdk.createSidewalk(sidewalk, completion: { result in
             createdSidewalkResult = result
           })
           expect(createdSidewalkResult).toEventuallyNot(beNil(), timeout: .seconds(10))
-          expect(createdSidewalkResult).toEventually(beSuccess(test: { createdSidewalk in
-            expect(createdSidewalk.id).toNot(beNil())
-            expect(createdSidewalk.pathCoordinates.count).to(equal(2))
-            sdk.deleteSidewalk(for: try! createdSidewalk.id!) { result in
+          expect(createdSidewalkResult).toEventually(beSuccess(test: { createdSidewalkResponse in
+            expect(createdSidewalkResponse.createdSidewalk.id).toNot(beNil())
+            expect(createdSidewalkResponse.createdSidewalk.pathCoordinates.count).to(equal(2))
+            sdk.deleteSidewalk(for: try! createdSidewalkResponse.createdSidewalk.id!) { result in
               print("deleted?: \(result)")
             }
           }), timeout: .seconds(10))

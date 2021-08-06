@@ -16,7 +16,7 @@ protocol CreateRequest{
 
 struct CreateSidewalkRequest: CreateRequest {
   typealias ModelType = Sidewalk
-  typealias ResponseType = Sidewalk
+  typealias ResponseType = CreateSidewalkResponse
   let urlPathComponent: String = "sidewalks"
   let object: Sidewalk
 }
@@ -26,7 +26,11 @@ public struct CreateSidewalkData: PathRepresentable, Codable {
   public let pathCoordinates: [Coordinate]
 }
 
-struct CreateSidewalkResponse{
+public struct CreateSidewalkResponse: Codable{
   let createdSidewalk: Sidewalk
   let createdIntersectionNodes: [IntersectionNode]
+  public init(createdSidewalk: Sidewalk, createdIntersectionNodes: [IntersectionNode]) {
+    self.createdSidewalk = createdSidewalk
+    self.createdIntersectionNodes = createdIntersectionNodes
+  }
 }

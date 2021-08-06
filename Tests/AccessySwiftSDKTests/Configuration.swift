@@ -50,8 +50,8 @@ class AccessySwiftSDKStub: AccessySwiftSDKType {
   static var apiVersion: String = ""
   var configuration: AccessySKDConfiguration = AccessySKDConfiguration(enviroment: .testing)
   
-  func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void) {
-    completion(.success(sidewalk))
+  func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<CreateSidewalkResponse, AccessySKDError>) -> Void) {
+    completion(.success(CreateSidewalkResponse(createdSidewalk: sidewalk, createdIntersectionNodes: [])))
   }
   
   func ping(completion: @escaping (Result<String, AccessySKDError>) -> Void) {

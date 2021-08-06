@@ -32,7 +32,7 @@ public protocol AccessySwiftSDKType {
   /// - Parameters:
   ///   - sidewalk: the ``Sidewalk`` object you want to create. ``Sidewalk/id``, ``Sidewalk/createdAt``, ``Sidewalk/updatedAt`` and ``Sidewalk/deletedAt`` will be ignored.
   ///   - completion: completion handler with created ``Sidewalk`` or ``AccessySKDError``
-  func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void)
+  func createSidewalk(_ sidewalk: Sidewalk, completion: @escaping (Result<CreateSidewalkResponse, AccessySKDError>) -> Void)
   ///Get sidewalk from database with corresponding id
   func getSidewalk(id: UUID, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void)
   ///Get all sidewalks from database with corresponding ids
