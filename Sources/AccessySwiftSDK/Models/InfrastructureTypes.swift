@@ -16,7 +16,7 @@ import Foundation
 ///////////////////////////////////////////////////////////////
 
 ///
-public struct Infrastructure: Codable {
+public struct Infrastructure: Codable, Hashable {
   public let sidewalks: [Sidewalk]
   public let trafficLights: [TrafficLight]
   public let trafficIsland: [TrafficIsland]
@@ -103,7 +103,7 @@ public struct IntersectionNode: DateRepresentable,
                                 IDRepresentable,
                                 AdjacentInfrastructuresRepresentable,
                                 CoordinateRepresentable,
-                                Codable {
+                                Codable, Hashable {
   public let id: UUID?
   public let coordinate: Coordinate
   public let createdAt: Date?
