@@ -37,4 +37,4 @@ public protocol AdjacentInfrastructuresRepresentable {
   var adjacentInfrastructures: [String] { get }
 }
 
-public typealias InfrastructureType = DateRepresentable & PathRepresentable & IDRepresentable & Codable & Hashable
+public typealias InfrastructureType = DateRepresentable & PathRepresentable & IDRepresentable & Codable & Hashable & Equatable
