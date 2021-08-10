@@ -59,6 +59,11 @@ public struct Sidewalk: InfrastructureType {
     self.updatedAt = updatedAt
     self.deletedAt = deletedAt
   }
+  
+  public init(pathCoordinates: [Coordinate]) {
+    self.init(id: nil, pathCoordinates: pathCoordinates, createdAt: nil, updatedAt: nil, deletedAt: nil)
+  }
+  
   /// First and last ``pathCoordinates`` will be used as path nodes. Use them in your UI to make selectable objects and to attach new ``IntersectionNode``s to them.
 }
 
@@ -119,5 +124,9 @@ public struct IntersectionNode: DateRepresentable,
     self.updatedAt = updatedAt
     self.deletedAt = deletedAt
     self.adjacentInfrastructures = adjacentInfrastructures
+  }
+  
+  public init(coordinate: Coordinate) {
+    self.init(id: nil, coordinate: coordinate, createdAt: nil, updatedAt: nil, deletedAt: nil)
   }
 }
