@@ -56,6 +56,16 @@ extension AccessySwiftSDK {
     let request = GetInfrastructureRequest()
     getRequest(for: request, completion: completion)
   }
+  
+  @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+  public func getInfrastructure() async throws -> Infrastructure {
+    return try await withCheckedThrowingContinuation { continuation in
+      getInfrastructure() { result in
+        continuation.resume(with: result)
+      }
+    }
+  }
+  
 }
 
 //MARK: Sidewalks

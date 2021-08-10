@@ -22,6 +22,10 @@ class AccessySwiftSDKStub: AccessySwiftSDKType {
     
   }
   
+  func getInfrastructure() async throws -> Infrastructure {
+    Infrastructure()
+  }
+  
   func getSidewalk(id: UUID, completion: @escaping (Result<Sidewalk, AccessySKDError>) -> Void) {
     
   }
