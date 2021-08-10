@@ -18,13 +18,15 @@ public protocol AccessySwiftSDKType {
   ///   - radius: Radius around the center coordinate for the region
   ///   - completion: Closure returning a Result type with the fetched ``Infrastructure`` object or an ``AccessySKDError``
   func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void)
-  
+  @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+  func getInfrastructure() async throws -> Infrastructure
   ///Receive all infrastructure objects
   /// - Parameters:
   ///   - completion: Closure returning a Result type with the fetched ``Infrastructure`` object or an ``AccessySKDError``
   func getInfrastructure(completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void)
+
   @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
-  func getInfrastructure() async throws -> Infrastructure
+  func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double) async throws -> Infrastructure
   ///Create sidewalk in database
   ///
   /// Use this method to create new ``Sidewalk`` in the database.

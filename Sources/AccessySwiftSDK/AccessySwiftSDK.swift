@@ -52,6 +52,16 @@ extension AccessySwiftSDK {
     getRequest(for: request, completion: completion)
   }
   
+  @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+  public func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double) async throws -> Infrastructure {
+    return try await withCheckedThrowingContinuation { continuation in
+      getInfrastructure(for: centerCoordinate, in: radius) { result in
+        continuation.resume(with: result)
+      }
+    }
+  }
+  
+  
   public func getInfrastructure(completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void) {
     let request = GetInfrastructureRequest()
     getRequest(for: request, completion: completion)

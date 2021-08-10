@@ -11,8 +11,9 @@ import CoreLocation
 
 
 class AccessySwiftSDKStub: AccessySwiftSDKType {
-
-  
+  func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double) async throws -> Infrastructure {
+    Infrastructure()
+  }
   
   func getInfrastructure(for centerCoordinate: Coordinate, in radius: Double, completion: @escaping (Result<Infrastructure, AccessySKDError>) -> Void) {
     
